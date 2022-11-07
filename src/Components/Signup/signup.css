@@ -7,14 +7,13 @@
   body{
     margin: 0;
     padding: 0;
-    background: linear-gradient(120deg,#305671, rgb(36, 103, 103));
+    background: linear-gradient(120deg,#4a6b83, rgb(49, 125, 125));
     height: 100vh;
   }
   .center{
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
     width: 400px;
     background: white;
     border-radius: 10px;
@@ -53,10 +52,7 @@
     top: 50%;
     left: 5px;
     color: #adadad;
-    transform: translateY(-50%);
     font-size: 16px;
-    pointer-events: none;
-    transition: .5s;
   }
   .txt_fields label{
     color: #adadad;
@@ -122,5 +118,8 @@
   }
   input[type="date"]{
     margin-left: 15px;
+    color:#a6a6a6;
+    border: 0;
   }
+
   
