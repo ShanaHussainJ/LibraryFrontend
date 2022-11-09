@@ -7,19 +7,23 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ViewBooks from "./Components/Admin/ViewBooks/ViewBooks";
 import AddBooks from "./Components/Admin/AddBooks/AddBooks";
 import { useState } from "react";
+import EditBooks from "./Components/Admin/EditBooks/EditBooks";
+import Returnbooks from "./Components/User/ReturnBooks/Returnbooks";
+import Returndata from "./Components/User/ReturnBooks/Returndata"
 function App() {
-  const [isAdmin, setIsAdmin] = useState(false);
+  const [isAdmin] = useState(true)
   return (
     <div className="App">
       <BrowserRouter>
-        <Navbar isAdmin={isAdmin} />
-
+        <Navbar isAdmin={isAdmin}/>
         <Routes>
           <Route path="addbooks" element={<AddBooks />} />
           <Route path="home" element={<Cards details={Data} />} />
-          <Route path="login" element={<Login />} />
+          <Route index element={<Login />} />
           <Route path="signup" element={<Signup />} />
           <Route path="viewbooks" element={<ViewBooks details={Data} />} />
+          <Route path="editbook/:id" element={<EditBooks/>} />
+          <Route path="returnbooks" element={<Returnbooks bookdata={Returndata}/>} />
         </Routes>
       </BrowserRouter>
     </div>

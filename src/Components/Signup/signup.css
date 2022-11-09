@@ -31,7 +31,7 @@
   form .txt_field{
     position: relative;
     border-bottom: 2px solid #adadad;
-    margin: 30px 0;
+    margin: 15px 0;
   }
   form .txt_fields{
     position: relative;
@@ -59,25 +59,6 @@
     font-size: 16px;
     pointer-events: none;
 
-  }
-  .txt_field span::before{
-    content: '';
-    position: absolute;
-    top: 40px;
-    left: 0;
-    width: 0%;
-    height: 2px;
-    background: #2691d9;
-    transition: .5s;
-  }
-  .txt_field input:focus ~ label,
-  .txt_field input:valid ~ label{
-    top: -5px;
-    color: #2691d9;
-  }
-  .txt_field input:focus ~ span::before,
-  .txt_field input:valid ~ span::before{
-    width: 100%;
   }
   .pass{
     margin: -5px 0 20px 5px;

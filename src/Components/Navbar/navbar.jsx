@@ -10,29 +10,14 @@ function Navbar({ isAdmin }) {
       <div className=" collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="content-navbar navbar-nav mr-auto">
           <li className="nav-item active">
-            <Link to={isAdmin ? "" : "/home"} className="nav-link">
-              Home <span className="sr-only">(current)</span>
+            <Link to={isAdmin ? "/viewbooks" : "/home"} className="nav-link">
+              Home 
             </Link>
           </li>
           {!isAdmin && (
-            <li className="nav-item">
-              <Link to={"/"} className="nav-link">
-                Checkout
-              </Link>
-            </li>
-          )}
-          {!isAdmin && (
             <li className="nav-item dropdown">
-              <Link to={"/"} className="nav-link ">
+              <Link to={"/returnbooks"} className="nav-link ">
                 Return
-              </Link>
-            </li>
-          )}
-          
-          {isAdmin && (
-            <li className="nav-item dropdown">
-              <Link to={"viewbooks"} className="nav-link ">
-                Add Books
               </Link>
             </li>
           )}
@@ -43,7 +28,7 @@ function Navbar({ isAdmin }) {
               data-toggle="dropdown"
             ></i>
             <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-              <Link to={"/login"} className="dropdown-item">
+              <Link to={"/"} className="dropdown-item">
                 Login
               </Link>
             </div>

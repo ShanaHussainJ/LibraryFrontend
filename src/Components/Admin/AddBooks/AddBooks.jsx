@@ -1,36 +1,48 @@
-import React from 'react'
-import {Link} from "react-router-dom"
+import React from "react";
+
 function AddBooks() {
   return (
     <div>
-      <div className="container">
-        <div className="row">
-            <div className="col-md-6">
-                <h2 className="text-center">Add Book</h2>
-                <form action="" method="POST" enctype="multipart/form-data">
-                <div className="txt_field">
-            <input type="email" required></input>
-            <span></span>
-            <label>Email</label>
+      <div className="center" style={{ height: "627px", top: "55%" }}>
+        <h1>Add Books</h1>
+        <form action="" method="POST">
+          <div className="txt_field ">
+            <input type="text" required></input>
+            <label>Book Id</label>
+          </div>
+          <div className="txt_field ">
+            <input type="text" required></input>
+            <label>ISBN No</label>
           </div>
           <div className="txt_field">
-            <input type="password" required></input>
-            <span></span>
-            <label>Password</label>
+            <input type="text" required></input>
+            <label>Book Name</label>
           </div>
-          <input type="submit" value="Login"></input>
-          <div className="signup_link">
-            Not a member? <Link to={"/signup"}>Signup</Link>
+          <div className="txt_field">
+            <input type="text" required></input>
+            <label>Author</label>
           </div>
-
-                    <button type="submit" class="btn btn-success mt-4">Submit</button>
-                </form>
-            </div>
-        </div>
-
+          <div className="txt_field">
+            <input type="text" required></input>
+            <label>Genres</label>
+          </div>
+          <div className="txt_field">
+            <input type="number" required></input>
+            <label>Total No of Copies</label>
+          </div>
+          <div className="txt_field">
+            <input type="number" required></input>
+            <label>No of Copies available for checkout</label>
+          </div>
+          <div className="txt_field">
+            <input type="text" required></input>
+            <label>Image</label>
+          </div>
+          <input type="submit" value="Add"></input>
+        </form>
       </div>
     </div>
-  )
+  );
 }
 
-export default AddBooks
+export default AddBooks;

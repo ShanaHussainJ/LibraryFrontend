@@ -9,12 +9,10 @@ const Login = () => {
         <form method="post">
           <div className="txt_field">
             <input type="email" required></input>
-            <span></span>
             <label>Email</label>
           </div>
           <div className="txt_field">
             <input type="password" required></input>
-            <span></span>
             <label>Password</label>
           </div>
           <input type="submit" value="Login"></input>
