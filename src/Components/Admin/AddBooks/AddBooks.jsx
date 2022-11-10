@@ -10,13 +10,13 @@ function AddBooks() {
             <input type="text" required></input>
             <label>Book Id</label>
           </div>
-          <div className="txt_field ">
-            <input type="text" required></input>
-            <label>ISBN No</label>
-          </div>
           <div className="txt_field">
             <input type="text" required></input>
             <label>Book Name</label>
+          </div>
+          <div className="txt_field ">
+            <input type="text" required></input>
+            <label>ISBN No</label>
           </div>
           <div className="txt_field">
             <input type="text" required></input>

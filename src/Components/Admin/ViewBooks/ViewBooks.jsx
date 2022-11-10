@@ -34,7 +34,7 @@ const ViewBooks = (props) => {
             <td>{value.author}</td>
             <td>{value.Genres}</td>
             <td>{value.ISBNNo}</td>
-            <td><img className="imgsize rounded-circle" src={value.img} alt="" /></td>
+            <td><img className="imgsize rounded-circle" src={value.img} alt="img" /></td>
             <td>{value.Copies}</td>
             <td>{value.Availforcheckout}</td>
             <td>

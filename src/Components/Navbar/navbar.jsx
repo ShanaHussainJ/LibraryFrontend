@@ -11,7 +11,7 @@ function Navbar({ isAdmin }) {
         <ul className="content-navbar navbar-nav mr-auto">
           <li className="nav-item active">
             <Link to={isAdmin ? "/viewbooks" : "/home"} className="nav-link">
-              Home 
+              Profile 
             </Link>
           </li>
           {!isAdmin && (

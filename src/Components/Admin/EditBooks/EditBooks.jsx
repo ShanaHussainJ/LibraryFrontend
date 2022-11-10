@@ -45,5 +45,4 @@ function EditBooks() {
     </div>
   );
 }
-
 export default EditBooks;
