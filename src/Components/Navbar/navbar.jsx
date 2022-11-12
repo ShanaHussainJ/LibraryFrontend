@@ -31,6 +31,9 @@ function Navbar({ isAdmin }) {
               <Link to={"/"} className="dropdown-item">
                 Login
               </Link>
+              <Link to={"/"} className="dropdown-item">
+                Logout
+              </Link>
             </div>
           </li>
         </ul>
