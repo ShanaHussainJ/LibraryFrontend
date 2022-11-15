@@ -25,8 +25,8 @@ function EditBooks() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-//default action that belongs to the event will not occur -> when: Clicking on a "Submit" button, prevent it from submitting a form
-    const bookName = bookNameRef.current.value
+    //default action that belongs to the event will not occur -> when: Clicking on a "Submit" button, prevent it from submitting a form
+    const bookName = bookNameRef.current.value;
     const isbnNumber = isbnNumberRef.current.value;
     const author = authorRef.current.value;
     const genres = genresRef.current.value;
@@ -34,8 +34,8 @@ function EditBooks() {
     const copiesForCheckout = copiesForCheckoutRef.current.value;
     const image = imageRef.current.value;
 
-    console.log(bookName)
-    
+    console.log(bookName);
+
     const details = {
       bookName,
       isbnNumber,
@@ -43,10 +43,9 @@ function EditBooks() {
       genres,
       totalCopies,
       copiesForCheckout,
-      image
-      
+      image,
     };
-    console.log(details)
+    console.log(details);
     axios({
       method: "put",
       // `$` symbol is use to write js inside string
@@ -85,22 +84,38 @@ function EditBooks() {
           <label htmlFor="bookName">Book Name</label>
         </div>
         <div className="txt_field">
-          <input type="text" required defaultValue={book?.isbnNumber} ref={isbnNumberRef}></input>
+          <input
+            type="text"
+            required
+            defaultValue={book?.isbnNumber}
+            ref={isbnNumberRef}
+          ></input>
           <label>ISBN No</label>
         </div>
         <div className="txt_field">
-          <input type="text" required defaultValue={book?.author} ref={authorRef}></input>
+          <input
+            type="text"
+            required
+            defaultValue={book?.author}
+            ref={authorRef}
+          ></input>
           <label>Author</label>
         </div>
         <div className="txt_field">
-          <input type="text" required defaultValue={book?.genres} ref={genresRef}></input>
+          <input
+            type="text"
+            required
+            defaultValue={book?.genres}
+            ref={genresRef}
+          ></input>
           <label>Genres</label>
         </div>
         <div className="txt_field">
           <input
             type="number"
             required
-            defaultValue={book?.totalCopies} ref={totalCopiesRef}
+            defaultValue={book?.totalCopies}
+            ref={totalCopiesRef}
           ></input>
           <label>Total No of Copies</label>
         </div>
@@ -108,12 +123,18 @@ function EditBooks() {
           <input
             type="number"
             required
-            defaultValue={book?.copiesForCheckout} ref={copiesForCheckoutRef}
+            defaultValue={book?.copiesForCheckout}
+            ref={copiesForCheckoutRef}
           ></input>
           <label>No of Copies available for checkout</label>
         </div>
         <div className="txt_field">
-          <input type="text" required defaultValue={book?.image} ref={imageRef}></input>
+          <input
+            type="text"
+            required
+            defaultValue={book?.image}
+            ref={imageRef}
+          ></input>
           <label>Image</label>
         </div>
         <input type="submit" value="Done"></input>

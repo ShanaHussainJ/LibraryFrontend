@@ -1,10 +1,10 @@
 import axios from "../../../axios";
 import React, { useEffect, useState } from "react";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./ViewBooks.css";
 
 const ViewBooks = () => {
-  // Fetch data from Backend and view all books 
+  // Fetch data from Backend and view all books
   const [books, setBooks] = useState([]);
   const [newData, setNewData] = useState();
 
@@ -20,7 +20,6 @@ const ViewBooks = () => {
       });
   }, [newData]);
 
-
   //Delete Books
   const handleDelete = (bookId) => {
     const confirmDelete = window.confirm("Do you want to delete?");
@@ -30,13 +29,11 @@ const ViewBooks = () => {
       .then((response) => {
         console.log(response);
         setNewData(response.data);
-        
       })
       .catch((error) => {
         console.log(error);
         alert(error);
-      })
-      
+      });
   };
 
   return (
@@ -81,7 +78,7 @@ const ViewBooks = () => {
         <tbody>
           {books.map((value) => (
             // unique id
-            <tr key={value.id}> 
+            <tr key={value.id}>
               <td>{value.id}</td>
               <td>{value.bookName}</td>
               <td>{value.author}</td>

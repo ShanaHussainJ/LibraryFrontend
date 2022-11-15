@@ -20,12 +20,10 @@ function Components({ details }) {
     if (window.confirm(text) === true) {
       alert("Success");
       event.currentTarget.disabled = true;
-      
-      
     } else {
       alert("Failed");
     }
-    
+
     axios
       .put(`/user/checkout/${userId}/${details.id}`)
       .then((response) => {
@@ -34,7 +32,7 @@ function Components({ details }) {
       .catch((error) => {
         console.log(error);
         alert(error);
-      })
+      });
   };
   return (
     <div className="col-md-3 ml-5">

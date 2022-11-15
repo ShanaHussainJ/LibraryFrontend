@@ -1,16 +1,13 @@
-import axios from "../../../axios"
+import axios from "../../../axios";
 import React, { useEffect, useState } from "react";
 import ReturnComponents from "./ReturnComponents";
 
 function Returnbooks() {
   const [orders, setOrders] = useState([]);
 
-
   useEffect(() => {
     axios
-      .get(
-        `/user/getuser/${localStorage.getItem("userId")}`
-      )
+      .get(`/user/getuser/${localStorage.getItem("userId")}`)
       .then((response) => {
         if (response.data) setOrders(response.data.order);
       })
@@ -34,9 +31,7 @@ function Returnbooks() {
           </thead>
           <tbody>
             {orders.map((book) => {
-              return (
-               <ReturnComponents book={book} key={book.checkoutBookId}/>
-              )
+              return <ReturnComponents book={book} key={book.checkoutBookId} />;
             })}
           </tbody>
         </table>

@@ -39,17 +39,17 @@ const AddBooks = () => {
       url: "/book/addbooks",
       data: details,
     })
-    .then((response) => {
-      if (response.data) {
-        navigate("/home");
-      } else {
-        alert("Failed!!!");
-      }
-    })
-    .catch((error) => {
-      console.log(error);
-      alert(error)
-    });
+      .then((response) => {
+        if (response.data) {
+          navigate("/home");
+        } else {
+          alert("Failed!!!");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        alert(error);
+      });
   };
   return (
     <div>
@@ -61,27 +61,27 @@ const AddBooks = () => {
             <label>Book Name</label>
           </div>
           <div className="txt_field ">
-            <input type="text" required ref={isbnNumberRef}/>
+            <input type="text" required ref={isbnNumberRef} />
             <label>ISBN No</label>
           </div>
           <div className="txt_field">
-            <input type="text" required ref={authorRef}/>
+            <input type="text" required ref={authorRef} />
             <label>Author</label>
           </div>
           <div className="txt_field">
-            <input type="text" required ref={genresRef}/>
+            <input type="text" required ref={genresRef} />
             <label>Genres</label>
           </div>
           <div className="txt_field">
-            <input type="number" required ref={totalCopiesRef}/>
+            <input type="number" required ref={totalCopiesRef} />
             <label>Total No of Copies</label>
           </div>
           <div className="txt_field">
-            <input type="number" required ref={copiesForCheckoutRef}/>
+            <input type="number" required ref={copiesForCheckoutRef} />
             <label>No of Copies available for checkout</label>
           </div>
           <div className="txt_field">
-            <input type="text" required ref={imageRef}/>
+            <input type="text" required ref={imageRef} />
             <label>Image</label>
           </div>
           <input type="submit" value="Add"></input>

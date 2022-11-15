@@ -15,10 +15,10 @@ function App() {
   const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
-    if(localStorage.getItem("userRole")==="admin"){
-      setIsAdmin(true)
+    if (localStorage.getItem("userRole") === "admin") {
+      setIsAdmin(true);
     }
-  }, [])
+  }, []);
 
   return (
     <div className="App">
@@ -26,11 +26,11 @@ function App() {
         <Navbar isAdmin={isAdmin} />
         <Routes>
           <Route path="addbooks" element={<AddBooks />} />
-          <Route path="home" element={<Cards/>} />
+          <Route path="home" element={<Cards />} />
           <Route index element={<Login />} />
           <Route path="signup" element={<Signup />} />
           <Route path="viewbooks" element={<ViewBooks />} />
-          <Route path="editbook/:bookId" element={<EditBooks/>} />
+          <Route path="editbook/:bookId" element={<EditBooks />} />
           <Route
             path="returnbooks"
             element={<Returnbooks bookdata={Returndata} />}
