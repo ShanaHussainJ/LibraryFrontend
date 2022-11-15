@@ -1,8 +1,17 @@
 import React from "react";
 import "../Navbar/navbar.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
+
 
 function Navbar({ isAdmin }) {
+  const navigate = useNavigate();
+
+  const handleLogout= () => {
+    localStorage.clear();
+    
+    navigate("/");
+  }
+
   return (
     <nav className="navbar overflow-auto navbar-expand-lg">
       <h2 className="lib-app">Library App</h2>
@@ -14,13 +23,12 @@ function Navbar({ isAdmin }) {
               Profile 
             </Link>
           </li>
-          {!isAdmin && (
             <li className="nav-item dropdown">
               <Link to={"/returnbooks"} className="nav-link ">
                 Return
               </Link>
             </li>
-          )}
+
           <li className="nav-item dropdown">
             <i
               className="nav-link bi bi-person"
@@ -31,9 +39,9 @@ function Navbar({ isAdmin }) {
               <Link to={"/"} className="dropdown-item">
                 Login
               </Link>
-              <Link to={"/"} className="dropdown-item">
+              <p onClick={handleLogout} className="dropdown-item">
                 Logout
-              </Link>
+              </p>
             </div>
           </li>
         </ul>

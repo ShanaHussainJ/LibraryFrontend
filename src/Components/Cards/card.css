@@ -11,4 +11,7 @@
   border-bottom-left-radius: calc(0.25rem - 1px);
   border-bottom-right-radius: calc(0.25rem - 1px);
 }
+.card-body{
+  padding: 10px;
+}
 
