@@ -1,39 +1,42 @@
-import React from "react";
-import Returndata from "./Returndata";
+import axios from "../../../axios"
+import React, { useEffect, useState } from "react";
+import ReturnComponents from "./ReturnComponents";
 
 function Returnbooks() {
+  const [orders, setOrders] = useState([]);
+
+
+  useEffect(() => {
+    axios
+      .get(
+        `/user/getuser/${localStorage.getItem("userId")}`
+      )
+      .then((response) => {
+        if (response.data) setOrders(response.data.order);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
   return (
     <div className="container">
       <div className="row">
         <table className="table mt-4 text-center">
-          <thead class="thead-dark">
+          <thead className="thead-dark">
             <tr>
               <th scope="col">Book Id</th>
               <th scope="col">Book Name</th>
               <th scope="col">ISBN No</th>
               <th scope="col">Issue Date</th>
               <th scope="col">Due Date</th>
-              <th scope="col">Return Date</th>
+              <th scope="col">Return Book</th>
             </tr>
           </thead>
           <tbody>
-            {Returndata.map((props) => {
+            {orders.map((book) => {
               return (
-                <tr>
-                  <td>{props.id}</td>
-                  <td>{props.title}</td>
-                  <td>{props.ISBNNo}</td>
-                  <td>{props.issuedate}</td>
-                  <td>{props.duedate}</td>
-                  <td>
-                    {props.returndate ? (
-                      props.returndate
-                    ) : (
-                      <button className="btn btn-info " style={{backgroundColor:"#212529",marginleft:" 9px"}}>Return Book</button>
-                    )}
-                  </td>
-                </tr>
-              );
+               <ReturnComponents book={book} key={book.checkoutBookId}/>
+              )
             })}
           </tbody>
         </table>

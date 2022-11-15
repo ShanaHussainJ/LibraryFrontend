@@ -17,9 +17,11 @@ function Components({ details }) {
 
   const handleClick = (event) => {
     let text = "Are you wish to checkout this item?";
-    if (window.confirm(text) == true) {
+    if (window.confirm(text) === true) {
       alert("Success");
       event.currentTarget.disabled = true;
+      
+      
     } else {
       alert("Failed");
     }

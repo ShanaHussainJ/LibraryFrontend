@@ -10,6 +10,11 @@
     background: linear-gradient(120deg,#4a6b83, rgb(49, 125, 125));
     height: 100vh;
   }
+
+  p{
+    margin: 0;
+  }
+
   .center{
     position: absolute;
     top: 50%;
