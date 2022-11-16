@@ -13,11 +13,9 @@ const AddBooks = () => {
 
   const navigate = useNavigate();
 
-
   useEffect(() => {
-    if(!localStorage.getItem("isLoggedIn"))
-    navigate("/")
-  }, [])
+    if (!localStorage.getItem("isLoggedIn")) navigate("/");
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
