@@ -6,6 +6,13 @@ function EditBooks() {
   const [book, setBook] = useState();
   const { bookId } = useParams();
 
+  const navigate=useNavigate();
+
+  useEffect(() => {
+    if(!localStorage.getItem("isLoggedIn"))
+    navigate("/")
+  }, [])
+
   useEffect(() => {
     axios
       .get(`/book/getbook/${bookId}`)
@@ -21,7 +28,7 @@ function EditBooks() {
   const copiesForCheckoutRef = useRef();
   const imageRef = useRef();
 
-  const navigate = useNavigate();
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();

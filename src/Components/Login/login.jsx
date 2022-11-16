@@ -2,7 +2,7 @@ import axios from "../../axios";
 import React, { useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../Login/login.css";
-const Login = () => {
+const Login = ({setIsLoggedIn}) => {
   const emailRef = useRef();
   const passwordRef = useRef();
 
@@ -29,6 +29,7 @@ const Login = () => {
           localStorage.setItem("isLoggedIn", true);
           localStorage.setItem("userId", response.data.id);
           localStorage.setItem("userRole", response.data.role);
+          setIsLoggedIn();
           navigate("/home");
         } else {
           alert("Login failed!!!");

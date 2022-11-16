@@ -16,3 +16,9 @@
   flex-direction: column;
   gap: 10px;
 }
+.alertmsg{
+  margin: 10px;
+  width: 500px;
+  text-align: center;
+  left: 250px;
+}

@@ -1,38 +1,38 @@
 import axios from "../../axios";
 import React, { useEffect, useState } from "react";
+// details of book
+function Components({ details, checkoutLimit, setUpdateData, userDetails, warningMessage }) {
 
-function Components({ details }) {
-  const [userDetails, setUserDetails] = useState();
+  const [disableButton, setDisableButton] = useState(false);
+
+  useEffect(() => {
+    userDetails?.order.forEach((cart) => {
+      if (cart.checkoutBookId === details.id) {
+        setDisableButton(true);
+      }
+    });
+  }, [userDetails]);
+
 
   const userId = localStorage.getItem("userId");
 
-  useEffect(() => {
-    axios
-      .get(`/user/getuser/${userId}`)
-      .then((response) => {
-        setUserDetails(response.data);
-      })
-      .catch((error) => console.log(error));
-  }, []);
 
-  const handleClick = (event) => {
+  const handleClick = () => {
     let text = "Are you wish to checkout this item?";
     if (window.confirm(text) === true) {
-      alert("Success");
-      event.currentTarget.disabled = true;
+      axios
+        .put(`/user/checkout/${userId}/${details.id}`)
+        .then((response) => {
+          setUpdateData();
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+          alert(error);
+        });
     } else {
       alert("Failed");
     }
-
-    axios
-      .put(`/user/checkout/${userId}/${details.id}`)
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-        alert(error);
-      });
   };
   return (
     <div className="col-md-3 ml-5">
@@ -46,7 +46,7 @@ function Components({ details }) {
           <p className="card-text">Author - {details.author}</p>
           <p>Genres - {details.genres}</p>
           {details.copiesForCheckout > 0 ? (
-            <button className="btn btn-primary" onClick={handleClick}>
+            <button className="btn btn-primary" onClick={handleClick} disabled={(localStorage.getItem("userRole")==="admin") || checkoutLimit || disableButton || warningMessage} >
               Checkout
             </button>
           ) : (

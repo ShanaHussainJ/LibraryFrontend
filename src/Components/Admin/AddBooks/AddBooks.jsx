@@ -1,5 +1,5 @@
 import axios from "../../../axios";
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const AddBooks = () => {
@@ -12,6 +12,12 @@ const AddBooks = () => {
   const imageRef = useRef();
 
   const navigate = useNavigate();
+
+
+  useEffect(() => {
+    if(!localStorage.getItem("isLoggedIn"))
+    navigate("/")
+  }, [])
 
   const handleSubmit = (e) => {
     e.preventDefault();

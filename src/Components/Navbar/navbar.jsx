@@ -2,12 +2,12 @@ import React from "react";
 import "../Navbar/navbar.css";
 import { Link, useNavigate } from "react-router-dom";
 
-function Navbar({ isAdmin }) {
+function Navbar({ isAdmin, isLoggedIn, setIsLoggedIn }) {
   const navigate = useNavigate();
 
   const handleLogout = () => {
     localStorage.clear();
-
+    setIsLoggedIn();
     navigate("/");
   };
 
@@ -17,17 +17,26 @@ function Navbar({ isAdmin }) {
 
       <div className=" collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="content-navbar navbar-nav mr-auto">
-          <li className="nav-item active">
-            <Link to={isAdmin ? "/viewbooks" : "/home"} className="nav-link">
-              Profile
-            </Link>
-          </li>
-          <li className="nav-item dropdown">
-            <Link to={"/returnbooks"} className="nav-link ">
-              Return
-            </Link>
-          </li>
+          {isLoggedIn && (
+            <>
+              <li className="nav-item active">
+                <Link
+                  to={isAdmin ? "/viewbooks" : "/home"}
+                  className="nav-link"
+                >
+                  Profile
+                </Link>
+              </li>
 
+              {!isAdmin && (
+                <li className="nav-item dropdown">
+                  <Link to={"/returnbooks"} className="nav-link ">
+                    Return
+                  </Link>
+                </li>
+              )}
+            </>
+          )}
           <li className="nav-item dropdown">
             <i
               className="nav-link bi bi-person"
@@ -35,12 +44,15 @@ function Navbar({ isAdmin }) {
               data-toggle="dropdown"
             ></i>
             <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-              <Link to={"/"} className="dropdown-item">
-                Login
-              </Link>
-              <p onClick={handleLogout} className="dropdown-item">
-                Logout
-              </p>
+              {isLoggedIn ? (
+                <p onClick={handleLogout} className="dropdown-item">
+                  Logout
+                </p>
+              ) : (
+                <Link to={"/"} className="dropdown-item">
+                  Login
+                </Link>
+              )}
             </div>
           </li>
         </ul>

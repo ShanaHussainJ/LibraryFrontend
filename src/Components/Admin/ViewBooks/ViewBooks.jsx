@@ -1,12 +1,19 @@
 import axios from "../../../axios";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./ViewBooks.css";
 
 const ViewBooks = () => {
   // Fetch data from Backend and view all books
   const [books, setBooks] = useState([]);
   const [newData, setNewData] = useState();
+
+  const navigate=useNavigate();
+
+  useEffect(() => {
+    if(!localStorage.getItem("isLoggedIn"))
+    navigate("/")
+  }, [])
 
   useEffect(() => {
     axios
