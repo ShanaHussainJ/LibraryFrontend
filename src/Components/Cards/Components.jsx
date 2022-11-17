@@ -16,7 +16,7 @@ function Components({ details, checkoutLimit, setUpdateData, userDetails, warnin
 
   const userId = localStorage.getItem("userId");
 
-
+  //update userdetails 
   const handleClick = () => {
     let text = "Are you wish to checkout this item?";
     if (window.confirm(text) === true) {

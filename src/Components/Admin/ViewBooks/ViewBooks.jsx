@@ -6,7 +6,7 @@ import "./ViewBooks.css";
 const ViewBooks = () => {
   // Fetch data from Backend and view all books
   const [books, setBooks] = useState([]);
-  const [newData, setNewData] = useState();
+  const [updateData, setUpdateData] = useState(); //render after deleting
 
   const navigate=useNavigate();
 
@@ -25,7 +25,7 @@ const ViewBooks = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, [newData]);
+  }, [updateData]);
 
   //Delete Books
   const handleDelete = (bookId) => {
@@ -34,8 +34,9 @@ const ViewBooks = () => {
     axios
       .delete(`/book/deletebook/${bookId}`)
       .then((response) => {
-        console.log(response);
-        setNewData(response.data);
+        
+        setUpdateData(response.data);
+        console.log(updateData);
       })
       .catch((error) => {
         console.log(error);

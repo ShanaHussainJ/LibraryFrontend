@@ -8,21 +8,12 @@ function Returnbooks() {
   const [orders, setOrders] = useState([]);
   const [update, setUpdate] = useState(false);
 
-  const navigate=useNavigate();
-
-  useEffect(() => {
-    if(!localStorage.getItem("isLoggedIn"))
-    navigate("/")
-  }, [])
-
-
   useEffect(() => {
     axios
       .get(`/user/getuser/${localStorage.getItem("userId")}`)
       .then((response) => {
         if (response.data){ 
-          setOrders(response.data.order)
-          
+          setOrders(response.data.order)  
         };
       })
       .catch((error) => {
@@ -30,7 +21,6 @@ function Returnbooks() {
       });
   }, [update]);
 
-  console.log(update)
 
 
   return (

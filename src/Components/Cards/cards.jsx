@@ -6,13 +6,13 @@ import moment from "moment";
 import { useNavigate } from "react-router-dom";
 
 const Cards = () => {
-  const [books, setBooks] = useState([]);
+  const [books, setBooks] = useState([]);   //Display all books in card
   const [userDetails, setUserDetails] = useState();
   const [checkoutLimit, setCheckoutLimit] = useState(false);
   const [updateData, setUpdateData] = useState(false);
   const [warningMessage, setWarningMessage] = useState(false);
 
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
   const userId = localStorage.getItem("userId");
 
@@ -21,6 +21,7 @@ const Cards = () => {
     navigate("/")
   }, [])
 
+  //Display all books in card
   useEffect(() => {
     axios
       .get("/book/viewallbooks")
@@ -32,6 +33,7 @@ const Cards = () => {
         console.log(error);
       });
 
+    // Fetching user details
     axios.get(`/user/getuser/${userId}`).then((response) => {
       if (response.data) {
         setUserDetails(response.data);

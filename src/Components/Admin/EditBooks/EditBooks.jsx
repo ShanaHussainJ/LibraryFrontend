@@ -32,7 +32,7 @@ function EditBooks() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    //default action that belongs to the event will not occur -> when: Clicking on a "Submit" button, prevent it from submitting a form
+    
     const bookName = bookNameRef.current.value;
     const isbnNumber = isbnNumberRef.current.value;
     const author = authorRef.current.value;
@@ -55,7 +55,6 @@ function EditBooks() {
     console.log(details);
     axios({
       method: "put",
-      // `$` symbol is use to write js inside string
       url: `/book/editbooks/${bookId}`,
       data: details,
     })
@@ -86,8 +85,6 @@ function EditBooks() {
             defaultValue={book?.bookName}
             ref={bookNameRef}
           />
-          {/* render before calling setBook the array is empty,
-           use ternery operator if value present in the book  means fetch bookname*/}
           <label htmlFor="bookName">Book Name</label>
         </div>
         <div className="txt_field">
