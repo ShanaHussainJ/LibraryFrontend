@@ -8,7 +8,6 @@ import AddBooks from "./Components/Admin/AddBooks/AddBooks";
 import { useEffect, useState } from "react";
 import EditBooks from "./Components/Admin/EditBooks/EditBooks";
 import Returnbooks from "./Components/User/ReturnBooks/Returnbooks";
-import Returndata from "./Components/User/ReturnBooks/Returndata";
 
 function App() {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -36,7 +35,7 @@ function App() {
           <Route path="editbook/:bookId" element={<EditBooks />} />
           <Route
             path="returnbooks"
-            element={<Returnbooks bookdata={Returndata} />}
+            element={<Returnbooks/>}
           />
         </Routes>
       </BrowserRouter>

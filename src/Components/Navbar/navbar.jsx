@@ -21,7 +21,7 @@ function Navbar({ isAdmin, isLoggedIn, setIsLoggedIn }) {
             <>
               <li className="nav-item active">
                 <Link
-                  to={isAdmin ? "/viewbooks" : "/home"}
+                  to={isAdmin ? "/home" : "/home"}
                   className="nav-link"
                 >
                   Profile
@@ -32,6 +32,13 @@ function Navbar({ isAdmin, isLoggedIn, setIsLoggedIn }) {
                 <li className="nav-item dropdown">
                   <Link to={"/returnbooks"} className="nav-link ">
                     Return
+                  </Link>
+                </li>
+              )}
+              {isAdmin && (
+                <li className="nav-item dropdown">
+                  <Link to={"/viewbooks"} className="nav-link ">
+                    Books
                   </Link>
                 </li>
               )}
