@@ -11,7 +11,7 @@ const ViewBooks = () => {
   const navigate=useNavigate();
 
   useEffect(() => {
-    if(!localStorage.getItem("isLoggedIn"))
+    if(!(localStorage.getItem("userRole")==="admin") )
     navigate("/")
   }, [])
 

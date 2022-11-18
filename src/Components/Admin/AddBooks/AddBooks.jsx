@@ -14,7 +14,8 @@ const AddBooks = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!localStorage.getItem("isLoggedIn")) navigate("/");
+    if (!(localStorage.getItem("userRole")==="admin")) 
+    navigate("/");
   }, []);
 
   const handleSubmit = (e) => {
@@ -37,7 +38,7 @@ const AddBooks = () => {
       copiesForCheckout,
       image,
     };
-
+    if (copiesForCheckout <= totalCopies){
     axios({
       method: "post",
       url: "/book/addbooks",
@@ -53,7 +54,10 @@ const AddBooks = () => {
       .catch((error) => {
         console.log(error);
         alert(error);
-      });
+      });}
+      else{
+        alert("CopiesForCheckout must me smaller than totalcopies")
+      }
   };
   return (
     <div>

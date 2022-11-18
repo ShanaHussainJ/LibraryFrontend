@@ -8,6 +8,7 @@ import AddBooks from "./Components/Admin/AddBooks/AddBooks";
 import { useEffect, useState } from "react";
 import EditBooks from "./Components/Admin/EditBooks/EditBooks";
 import Returnbooks from "./Components/User/ReturnBooks/Returnbooks";
+import NotFound from "./NotFound";
 
 function App() {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -24,7 +25,7 @@ function App() {
 
   return (
     <div className="App">
-      <BrowserRouter>
+      <BrowserRouter>t
         <Navbar isAdmin={isAdmin} isLoggedIn={isLoggedIn} setIsLoggedIn={() => setIsLoggedIn(false)} />
         <Routes>
           <Route path="addbooks" element={<AddBooks />} />
@@ -33,6 +34,7 @@ function App() {
           <Route path="signup" element={<Signup />} />
           <Route path="viewbooks" element={<ViewBooks />} />
           <Route path="editbook/:bookId" element={<EditBooks />} />
+          <Route path="*" element={<NotFound/>} />
           <Route
             path="returnbooks"
             element={<Returnbooks/>}

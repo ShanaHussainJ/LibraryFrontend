@@ -5,11 +5,13 @@ import { useParams, useNavigate } from "react-router-dom";
 function EditBooks() {
   const [book, setBook] = useState();
   const { bookId } = useParams();
+  
+  // console.log(useParams())
 
   const navigate=useNavigate();
 
   useEffect(() => {
-    if(!localStorage.getItem("isLoggedIn"))
+    if(!(localStorage.getItem("userRole")==="admin"))
     navigate("/")
   }, [])
 
@@ -53,6 +55,7 @@ function EditBooks() {
       image,
     };
     console.log(details);
+    if (copiesForCheckout <= totalCopies){
     axios({
       method: "put",
       url: `/book/editbooks/${bookId}`,
@@ -70,7 +73,10 @@ function EditBooks() {
       .catch((error) => {
         console.log(error);
         alert(error);
-      });
+      });}
+      else{
+        alert("CopiesForCheckout must me smaller than totalcopies");
+      }
   };
 
   return (

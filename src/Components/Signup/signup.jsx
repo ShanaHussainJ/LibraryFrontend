@@ -40,6 +40,7 @@ function Signup() {
           if (response.data) {
             navigate("/");
           } else {
+            alert("Sorry...emailId already exists");
           }
         })
         .catch((error) => {

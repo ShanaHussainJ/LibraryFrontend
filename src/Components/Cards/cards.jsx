@@ -5,6 +5,7 @@ import Components from "./Components";
 import moment from "moment";
 import { useNavigate } from "react-router-dom";
 
+
 const Cards = () => {
   const [books, setBooks] = useState([]);   //Display all books in card
   const [userDetails, setUserDetails] = useState();
@@ -17,7 +18,7 @@ const Cards = () => {
   const userId = localStorage.getItem("userId");
 
   useEffect(() => {
-    if(!localStorage.getItem("isLoggedIn"))
+    if(!localStorage.getItem("isLoggedIn") )
     navigate("/")
   }, [])
 
@@ -45,7 +46,6 @@ const Cards = () => {
           const issueDate = moment(element.date);
           if (dateNow.diff(issueDate, "days") > 14) {
             setWarningMessage(true);
-            
           }
         });
       }
