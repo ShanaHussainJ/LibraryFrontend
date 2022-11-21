@@ -12,6 +12,8 @@ const Cards = () => {
   const [checkoutLimit, setCheckoutLimit] = useState(false);
   const [updateData, setUpdateData] = useState(false);
   const [warningMessage, setWarningMessage] = useState(false);
+  
+  
 
   const navigate = useNavigate();
 
@@ -40,6 +42,8 @@ const Cards = () => {
         setUserDetails(response.data);
         setCheckoutLimit(response.data.order.length > 1);
 
+        
+
         const dateNow = moment(new Date());
 
         response.data.order.forEach((element) => {
@@ -51,7 +55,7 @@ const Cards = () => {
       }
     });
   }, [updateData]);
-  console.log("first", updateData);
+
 
   return (
     <div className="container mt-10 pt-5" style={{ marginTop: "30px" }}>

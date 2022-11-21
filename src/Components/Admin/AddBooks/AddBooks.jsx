@@ -48,7 +48,7 @@ const AddBooks = () => {
         if (response.data) {
           navigate("/home");
         } else {
-          alert("Failed!!!");
+          alert("Sorry...This book already exists!!!");
         }
       })
       .catch((error) => {

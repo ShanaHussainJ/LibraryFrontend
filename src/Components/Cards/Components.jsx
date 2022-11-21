@@ -1,9 +1,16 @@
 import axios from "../../axios";
 import React, { useEffect, useState } from "react";
 // details of book
-function Components({ details, checkoutLimit, setUpdateData, userDetails, warningMessage }) {
+function Components({ details, checkoutLimit, setUpdateData, userDetails, warningMessage}) {
 
   const [disableButton, setDisableButton] = useState(false);
+  const [hideButton, setHideButton] = useState(true);
+  useEffect(()=>{
+    if (localStorage.getItem("userRole")==="admin")
+    setHideButton(false)
+  },[])
+
+  console.log(hideButton)
 
   useEffect(() => {
     userDetails?.order.forEach((cart) => {
@@ -46,9 +53,11 @@ function Components({ details, checkoutLimit, setUpdateData, userDetails, warnin
           <p className="card-text">Author - {details.author}</p>
           <p>Genres - {details.genres}</p>
           {details.copiesForCheckout > 0 ? (
-            <button className="btn btn-primary" onClick={handleClick} disabled={(localStorage.getItem("userRole")==="admin") || checkoutLimit || disableButton || warningMessage} >
+            <>
+            {hideButton && <button className="btn btn-primary" onClick={handleClick} disabled={checkoutLimit || disableButton || warningMessage } >
               Checkout
-            </button>
+            </button>}
+            </>
           ) : (
             <p className="text-danger font-weight-bold">Out of Stock</p>
           )}
@@ -57,5 +66,7 @@ function Components({ details, checkoutLimit, setUpdateData, userDetails, warnin
     </div>
   );
 }
+
+// (localStorage.getItem("userRole")==="admin") || 
 
 export default Components;
