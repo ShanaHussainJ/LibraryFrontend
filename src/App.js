@@ -9,39 +9,59 @@ import { useEffect, useState } from "react";
 import EditBooks from "./Components/Admin/EditBooks/EditBooks";
 import Returnbooks from "./Components/User/ReturnBooks/Returnbooks";
 import NotFound from "./NotFound";
-import { PrivateRoute } from "./PrivateRoute";
+import PrivateRoute from "./PrivateRoute";
+import AdminRoute from "./AdminRoute";
 
-  
 function App() {
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isAdmin, setIsAdmin] = useState(JSON.parse(localStorage.getItem("userRole")==="admin"));
+  const [isLoggedIn, setIsLoggedIn] = useState(JSON.parse(localStorage.getItem("isLoggedIn")));
 
   useEffect(() => {
     if (localStorage.getItem("userRole") === "admin") {
       setIsAdmin(true);
-    }else{
-      setIsAdmin(false)
+    } else {
+      setIsAdmin(false);
     }
-    if(localStorage.getItem("isLoggedIn")) setIsLoggedIn(true)
-    
+    if (localStorage.getItem("isLoggedIn")) setIsLoggedIn(true);
   }, [isAdmin, isLoggedIn]);
-
+console.log(isLoggedIn)
   return (
     <div className="App">
       <BrowserRouter>
-        <Navbar isAdmin={isAdmin} isLoggedIn={isLoggedIn} setIsLoggedIn={() => setIsLoggedIn(false)} />
+        <Navbar isAdmin={isAdmin} isLoggedIn={isLoggedIn} setIsLoggedIn={() => setIsLoggedIn(false)}/>
         <Routes>
-          <Route path="addbooks" element={<PrivateRoute><AddBooks /></PrivateRoute>} />
-          <Route path="home" element={<PrivateRoute><Cards /></PrivateRoute>} />
-          <Route index element={<Login setIsLoggedIn={() => setIsLoggedIn(true)} />} />
-          <Route path="signup" element={<PrivateRoute><Signup /></PrivateRoute>} />
-          <Route path="viewbooks" element={<PrivateRoute> <ViewBooks /> </PrivateRoute>} />
-          <Route path="editbook/:bookId" element={<PrivateRoute><EditBooks /></PrivateRoute>} />
-          <Route path="*" element={<NotFound/>} />
+  
+          <Route element={<PrivateRoute isLoggedIn={isLoggedIn} />}>
+            <Route path="/home" element={<Cards />} />
+          </Route>
+
+          <Route element={<AdminRoute isAdmin={isAdmin} />}>
+            <Route path="addbooks" element={<AddBooks />} />
+          </Route>
+
+          <Route element={<AdminRoute isAdmin={isAdmin} />}>
+            <Route path="viewbooks" element={<ViewBooks />} />
+          </Route>
+
+          <Route element={<AdminRoute isAdmin={isAdmin} />}>
+            <Route path="editbook/:bookId" element={<EditBooks />} />
+          </Route>
+          
           <Route
-            path="returnbooks"
-            element={<Returnbooks/>}
+            index
+            element={<Login setIsLoggedIn={() => setIsLoggedIn(true)} />}
           />
+          <Route path="signup" element={<Signup />} />
+          <Route path="*" element={<NotFound />} />
+          <Route path="returnbooks" element={<Returnbooks />} />
+          
+          {/* <Route
+            path="editbook/:bookId"
+            element={
+                <EditBooks />
+            }
+          /> */}
+          
         </Routes>
       </BrowserRouter>
     </div>

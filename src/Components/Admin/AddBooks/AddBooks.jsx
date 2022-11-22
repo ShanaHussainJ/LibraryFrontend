@@ -1,5 +1,5 @@
 import axios from "../../../axios";
-import React, { useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 const AddBooks = () => {
@@ -13,10 +13,10 @@ const AddBooks = () => {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!(localStorage.getItem("userRole")==="admin")) 
-    navigate("/");
-  }, []);
+  // useEffect(() => {
+  //   if (!(localStorage.getItem("userRole")==="admin")) 
+  //   navigate("/");
+  // }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();

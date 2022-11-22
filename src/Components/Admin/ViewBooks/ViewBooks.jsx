@@ -1,6 +1,6 @@
 import axios from "../../../axios";
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./ViewBooks.css";
 
 const ViewBooks = () => {
@@ -8,12 +8,12 @@ const ViewBooks = () => {
   const [books, setBooks] = useState([]);
   const [updateData, setUpdateData] = useState(); //render after deleting
 
-  const navigate=useNavigate();
+  // const navigate=useNavigate();
 
-  useEffect(() => {
-    if(!(localStorage.getItem("userRole")==="admin") )
-    navigate("/")
-  }, [])
+  // useEffect(() => {
+  //   if(!(localStorage.getItem("userRole")==="admin") )
+  //   navigate("/")
+  // }, [])
 
   useEffect(() => {
     axios

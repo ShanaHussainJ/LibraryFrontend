@@ -6,14 +6,8 @@ function EditBooks() {
   const [book, setBook] = useState();
   const { bookId } = useParams();
   
-  // console.log(useParams())
 
   const navigate=useNavigate();
-
-  useEffect(() => {
-    if(!(localStorage.getItem("userRole")==="admin"))
-    navigate("/")
-  }, [])
 
   useEffect(() => {
     axios

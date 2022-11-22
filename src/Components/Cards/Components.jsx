@@ -10,8 +10,6 @@ function Components({ details, checkoutLimit, setUpdateData, userDetails, warnin
     setHideButton(false)
   },[])
 
-  console.log(hideButton)
-
   useEffect(() => {
     userDetails?.order.forEach((cart) => {
       if (cart.checkoutBookId === details.id) {
@@ -67,6 +65,6 @@ function Components({ details, checkoutLimit, setUpdateData, userDetails, warnin
   );
 }
 
-// (localStorage.getItem("userRole")==="admin") || 
+ 
 
 export default Components;
